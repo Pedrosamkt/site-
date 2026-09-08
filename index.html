@@ -1,0 +1,319 @@
+<title>Plano de Tráfego Magnífica</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Public+Sans:wght@400;500;600;700&display=swap');
+
+  :root{
+    --bg: #F5F6F2;
+    --surface: #FFFFFF;
+    --surface-alt: #EBEFE7;
+    --ink: #16221A;
+    --ink-muted: #5A6759;
+    --ink-faint: #8B9689;
+    --primary: #1E4432;
+    --primary-deep: #123023;
+    --primary-tint: #E3EBE2;
+    --accent: #D9772E;
+    --accent-deep: #B85B1D;
+    --accent-tint: #FBEADA;
+    --border: #DCE2D5;
+    --border-soft: #E7ECE1;
+    --shadow: 0 1px 2px rgba(20,30,22,.04), 0 10px 28px -14px rgba(20,30,22,.22);
+  }
+
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg: #10160F;
+      --surface: #182018;
+      --surface-alt: #1E281D;
+      --ink: #EBEFE4;
+      --ink-muted: #A7B29E;
+      --ink-faint: #6F7B69;
+      --primary: #82C69C;
+      --primary-deep: #A9D9BB;
+      --primary-tint: #1E2E22;
+      --accent: #F0964D;
+      --accent-deep: #FFB374;
+      --accent-tint: #33251A;
+      --border: #2C3A2A;
+      --border-soft: #212C1F;
+      --shadow: 0 1px 2px rgba(0,0,0,.35), 0 10px 28px -14px rgba(0,0,0,.55);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg: #10160F;
+    --surface: #182018;
+    --surface-alt: #1E281D;
+    --ink: #EBEFE4;
+    --ink-muted: #A7B29E;
+    --ink-faint: #6F7B69;
+    --primary: #82C69C;
+    --primary-deep: #A9D9BB;
+    --primary-tint: #1E2E22;
+    --accent: #F0964D;
+    --accent-deep: #FFB374;
+    --accent-tint: #33251A;
+    --border: #2C3A2A;
+    --border-soft: #212C1F;
+    --shadow: 0 1px 2px rgba(0,0,0,.35), 0 10px 28px -14px rgba(0,0,0,.55);
+  }
+
+  *{ box-sizing: border-box; }
+  html{ color-scheme: light dark; }
+  body{
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Public Sans', -apple-system, 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+  }
+  h1,h2,h3{ font-family: 'Manrope', -apple-system, 'Helvetica Neue', Arial, sans-serif; text-wrap: balance; margin: 0; color: var(--ink); }
+  p{ margin: 0; }
+  .tabular{ font-variant-numeric: tabular-nums; }
+  a{ color: inherit; }
+  img{ max-width: 100%; }
+
+  @media (prefers-reduced-motion: no-preference){
+    .fade-up{ animation: fadeUp .55s cubic-bezier(.16,1,.3,1) both; }
+    .fade-up.d1{ animation-delay: .08s; }
+    .fade-up.d2{ animation-delay: .16s; }
+  }
+  @keyframes fadeUp{ from{ opacity:0; transform: translateY(10px);} to{ opacity:1; transform:none; } }
+
+  .page{ max-width: 760px; margin: 0 auto; padding: 0 24px 90px; }
+
+  /* ---------- header ---------- */
+  header.hero{ padding: 56px 0 40px; border-bottom: 1px solid var(--border-soft); display:flex; flex-direction:column; gap:20px; }
+  .client-tag{
+    display:inline-flex; align-items:center; gap:8px; align-self:flex-start;
+    background: var(--primary-tint); color: var(--primary-deep);
+    font-size: 13px; font-weight: 700; padding: 7px 14px 7px 11px; border-radius: 999px;
+    border: 1px solid var(--border-soft);
+  }
+  .client-tag .dot{ width:7px; height:7px; border-radius:50%; background: var(--primary); flex-shrink:0; }
+  header.hero h1{ font-size: clamp(30px, 4.6vw, 42px); font-weight: 800; letter-spacing:-.01em; max-width: 15ch; }
+  header.hero .sub{ font-size: 16.5px; color: var(--ink-muted); max-width: 54ch; }
+  .hero-facts{ display:flex; flex-wrap:wrap; gap: 26px; margin-top: 4px; }
+  .hero-facts div{ display:flex; flex-direction:column; gap:2px; }
+  .hero-facts .k{ font-size:11.5px; font-weight:700; color: var(--ink-faint); text-transform:uppercase; letter-spacing:.06em; }
+  .hero-facts .v{ font-size:14.5px; font-weight:700; }
+
+  /* ---------- generic section ---------- */
+  section{ padding: 48px 0; border-bottom: 1px solid var(--border-soft); }
+  section:last-of-type{ border-bottom: none; }
+  .section-head{ display:flex; flex-direction:column; gap:8px; margin-bottom: 26px; }
+  .section-head h2{ font-size: clamp(22px,3vw,27px); font-weight: 800; }
+  .section-head p{ font-size: 15px; color: var(--ink-muted); max-width: 58ch; }
+
+  /* ---------- deliverables ---------- */
+  .deliver-list{ display:flex; flex-direction:column; gap: 4px; }
+  .deliver-row{
+    display:grid; grid-template-columns: 40px 1fr; gap: 16px; align-items:flex-start;
+    padding: 16px 4px; border-top: 1px solid var(--border-soft);
+  }
+  .deliver-row:first-child{ border-top: none; }
+  .deliver-icon{
+    width:40px; height:40px; border-radius: 10px; background: var(--primary-tint);
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  }
+  .deliver-icon svg{ width:20px; height:20px; stroke: var(--primary); }
+  .deliver-body h3{ font-size: 16.5px; font-weight: 700; }
+  .deliver-body p{ font-size: 14.5px; color: var(--ink-muted); margin-top: 4px; max-width: 54ch; }
+
+  /* ---------- process ---------- */
+  .process{ display:flex; flex-direction:column; }
+  .proc-item{ display:grid; grid-template-columns: 44px 1fr; gap:18px; position:relative; padding-bottom: 30px; }
+  .proc-item:last-child{ padding-bottom: 0; }
+  .proc-item::before{ content:''; position:absolute; left:21px; top:44px; bottom:0; width:1px; background: var(--border); }
+  .proc-item:last-child::before{ display:none; }
+  .proc-num{
+    width:44px; height:44px; border-radius:50%; background: var(--surface); color: var(--primary);
+    border: 1.5px solid var(--primary); display:flex; align-items:center; justify-content:center;
+    font-family:'Manrope',sans-serif; font-weight:800; font-size:16.5px; z-index:1; flex-shrink:0;
+  }
+  .proc-body{ padding-top:6px; }
+  .proc-body h3{ font-size: 16.5px; font-weight: 700; }
+  .proc-body p{ font-size: 14.5px; color: var(--ink-muted); margin-top:5px; max-width: 54ch; }
+
+  /* ---------- pricing ---------- */
+  .price-ref{
+    display:flex; align-items:baseline; gap:10px; margin-bottom: 22px;
+    font-size: 14px; color: var(--ink-faint);
+  }
+  .price-ref .strike{ text-decoration: line-through; text-decoration-color: var(--ink-faint); font-weight:700; }
+  .price-grid{ display:grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 620px){ .price-grid{ grid-template-columns: 1fr; } }
+  .price-card{
+    background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
+    padding: 24px 22px; box-shadow: var(--shadow); display:flex; flex-direction:column; gap:16px;
+    position: relative;
+  }
+  .price-card.rec{ border: 2px solid var(--accent); }
+  .price-card .badge{
+    position:absolute; top:-12px; left: 20px; background: var(--accent); color: var(--surface);
+    font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing:.05em;
+    padding: 5px 12px; border-radius: 999px;
+  }
+  .price-card .plan-name{ font-size:13px; font-weight:700; color: var(--ink-faint); text-transform:uppercase; letter-spacing:.05em; margin-top: 6px; }
+  .price-card .amount{ font-family:'Manrope',sans-serif; font-size: 34px; font-weight: 800; }
+  .price-card .amount small{ font-family:'Public Sans'; font-size:13.5px; font-weight:600; color: var(--ink-faint); }
+  .price-card ul{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px; }
+  .price-card li{ display:flex; gap:9px; align-items:flex-start; font-size:14px; color: var(--ink); }
+  .price-card li svg{ width:16px; height:16px; flex-shrink:0; margin-top:2px; stroke: var(--primary); }
+  .price-card.rec li svg{ stroke: var(--accent-deep); }
+  .price-card .terms{
+    margin-top: 2px; padding-top: 14px; border-top: 1px solid var(--border-soft);
+    display:flex; flex-direction:column; gap:3px;
+  }
+  .price-card .terms .total{ font-size: 13.5px; font-weight: 700; color: var(--ink); }
+  .price-card .terms .fine{ font-size: 12px; color: var(--ink-faint); }
+  .price-note{ margin-top:16px; font-size:13px; color: var(--ink-faint); }
+
+  /* ---------- closing ---------- */
+  .closing{ display:flex; flex-direction:column; gap:14px; }
+  .closing h2{ font-size: clamp(22px,3vw,27px); font-weight: 800; max-width: 22ch; }
+  .closing p{ font-size:15.5px; color: var(--ink-muted); max-width: 56ch; }
+  .closing-list{ display:flex; flex-direction:column; gap:9px; margin-top:4px; }
+  .closing-list li{ list-style:none; display:flex; gap:10px; font-size:14.5px; align-items:flex-start; }
+  .closing-list li::before{ content:'\2192'; color: var(--accent-deep); font-weight:700; flex-shrink:0; }
+
+  footer{ padding: 36px 0 0; }
+  footer p{ font-size: 12.5px; color: var(--ink-faint); }
+</style>
+
+<div class="page">
+
+  <header class="hero">
+    <span class="client-tag fade-up"><span class="dot"></span>Loja Magnífica</span>
+    <h1 class="fade-up d1">Seu plano para atrair mais clientes</h1>
+    <p class="sub fade-up d2">Anúncios pagos e rastreamento completo para gerar clientes qualificados todo mês, sem depender só do alcance do Instagram.</p>
+    <div class="hero-facts">
+      <div><span class="k">Cliente</span><span class="v">Loja Magnífica</span></div>
+      <div><span class="k">Canal</span><span class="v">Instagram e Facebook Ads</span></div>
+      <div><span class="k">Início</span><span class="v">A combinar</span></div>
+    </div>
+  </header>
+
+  <section>
+    <div class="section-head">
+      <h2>O que fazemos por você</h2>
+      <p>A base do plano, incluída em qualquer uma das opções de investimento.</p>
+    </div>
+    <div class="deliver-list">
+      <div class="deliver-row">
+        <div class="deliver-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4Z"/></svg></div>
+        <div class="deliver-body">
+          <h3>Anúncios pagos no Instagram e Facebook</h3>
+          <p>Campanhas segmentadas para quem tem real perfil de comprar, não só curtir o post.</p>
+        </div>
+      </div>
+      <div class="deliver-row">
+        <div class="deliver-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="0.5" fill="currentColor"/></svg></div>
+        <div class="deliver-body">
+          <h3>Rastreamento completo</h3>
+          <p>Cada contato no WhatsApp identificado: qual anúncio gerou, quanto custou, se virou venda.</p>
+        </div>
+      </div>
+      <div class="deliver-row">
+        <div class="deliver-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11a9 9 0 0 1 18 0v6a2 2 0 0 1-2 2h-1v-7h3"/><path d="M3 17v-6h3v7H5a2 2 0 0 1-2-2Z"/></svg></div>
+        <div class="deliver-body">
+          <h3>Acompanhamento técnico de atendimento e direcionamento estratégico</h3>
+          <p>Orientação sobre como responder e conduzir cada lead no WhatsApp, para converter mais contatos em vendas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h2>Como funciona</h2>
+      <p>Três etapas simples, do primeiro clique à primeira leitura de resultados.</p>
+    </div>
+    <div class="process">
+      <div class="proc-item">
+        <div class="proc-num">1</div>
+        <div class="proc-body">
+          <h3>Configuramos tudo</h3>
+          <p>Rastreamento, contas de anúncio e link do WhatsApp prontos antes do primeiro real investido.</p>
+        </div>
+      </div>
+      <div class="proc-item">
+        <div class="proc-num">2</div>
+        <div class="proc-body">
+          <h3>Colocamos os anúncios no ar</h3>
+          <p>Acompanhamento diário nos primeiros dias, para garantir que a verba está gerando contato de verdade.</p>
+        </div>
+      </div>
+      <div class="proc-item">
+        <div class="proc-num">3</div>
+        <div class="proc-body">
+          <h3>Ajustamos toda semana</h3>
+          <p>Cortamos o que não performa e damos mais verba para o que traz cliente, com base em dado, não achismo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h2>Investimento</h2>
+      <p>Duas formas de fechar hoje. Escolha a que melhor cabe no momento da loja.</p>
+    </div>
+
+    <div class="price-ref">
+      <span>Valor de tabela</span>
+      <span class="strike tabular">R$ 1.600/mês</span>
+    </div>
+
+    <div class="price-grid">
+      <div class="price-card rec">
+        <span class="badge">Recomendado</span>
+        <span class="plan-name">Com bônus</span>
+        <div class="amount tabular">R$ 1.400<small>/mês</small></div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Tráfego pago no Instagram e Facebook</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Rastreamento completo dos leads</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Google Meu Negócio configurado</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Presença nas buscas por IA (ChatGPT, Gemini)</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Página com a apresentação completa da loja e dos produtos</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Dashboard de acompanhamento das métricas</li>
+        </ul>
+        <div class="terms">
+          <span class="total tabular">R$ 4.200 em até 3x no boleto ou cartão</span>
+          <span class="fine">Contrato mínimo de 3 meses · sujeito a taxas da forma de pagamento</span>
+        </div>
+      </div>
+      <div class="price-card">
+        <span class="plan-name">Sem bônus</span>
+        <div class="amount tabular">R$ 1.200<small>/mês</small></div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Tráfego pago no Instagram e Facebook</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Rastreamento completo dos leads</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Dashboard de acompanhamento das métricas</li>
+        </ul>
+        <div class="terms">
+          <span class="total tabular">R$ 3.600 em até 3x no boleto ou cartão</span>
+          <span class="fine">Contrato mínimo de 3 meses · sujeito a taxas da forma de pagamento</span>
+        </div>
+      </div>
+    </div>
+    <p class="price-note">Condição válida para fechamento na reunião de hoje.</p>
+  </section>
+
+  <section style="border-bottom:none;">
+    <div class="closing">
+      <h2>Só falta uma decisão</h2>
+      <p>Escolha entre as duas opções acima e começamos a configuração ainda esta semana.</p>
+      <ul class="closing-list">
+        <li>Confirmar a opção de investimento</li>
+        <li>Liberar acesso ao Instagram e ao WhatsApp da loja</li>
+        <li>Primeira campanha no ar em até 7 dias</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <p>Loja Magnífica · plano válido para os primeiros 90 dias de execução</p>
+  </footer>
+
+</div>
