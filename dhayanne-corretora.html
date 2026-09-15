@@ -1,0 +1,414 @@
+<title>Plano de Tráfego Dhayanne</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Public+Sans:wght@400;500;600;700&display=swap');
+
+  :root{
+    --bg: #F5F6F2;
+    --surface: #FFFFFF;
+    --surface-alt: #EBEFE7;
+    --ink: #16221A;
+    --ink-muted: #5A6759;
+    --ink-faint: #8B9689;
+    --primary: #1E4432;
+    --primary-deep: #123023;
+    --primary-tint: #E3EBE2;
+    --accent: #D9772E;
+    --accent-deep: #B85B1D;
+    --accent-tint: #FBEADA;
+    --border: #DCE2D5;
+    --border-soft: #E7ECE1;
+    --shadow: 0 1px 2px rgba(20,30,22,.04), 0 10px 28px -14px rgba(20,30,22,.22);
+  }
+
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg: #10160F;
+      --surface: #182018;
+      --surface-alt: #1E281D;
+      --ink: #EBEFE4;
+      --ink-muted: #A7B29E;
+      --ink-faint: #6F7B69;
+      --primary: #82C69C;
+      --primary-deep: #A9D9BB;
+      --primary-tint: #1E2E22;
+      --accent: #F0964D;
+      --accent-deep: #FFB374;
+      --accent-tint: #33251A;
+      --border: #2C3A2A;
+      --border-soft: #212C1F;
+      --shadow: 0 1px 2px rgba(0,0,0,.35), 0 10px 28px -14px rgba(0,0,0,.55);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg: #10160F;
+    --surface: #182018;
+    --surface-alt: #1E281D;
+    --ink: #EBEFE4;
+    --ink-muted: #A7B29E;
+    --ink-faint: #6F7B69;
+    --primary: #82C69C;
+    --primary-deep: #A9D9BB;
+    --primary-tint: #1E2E22;
+    --accent: #F0964D;
+    --accent-deep: #FFB374;
+    --accent-tint: #33251A;
+    --border: #2C3A2A;
+    --border-soft: #212C1F;
+    --shadow: 0 1px 2px rgba(0,0,0,.35), 0 10px 28px -14px rgba(0,0,0,.55);
+  }
+
+  *{ box-sizing: border-box; }
+  html{ color-scheme: light dark; }
+  body{
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Public Sans', -apple-system, 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+  }
+  h1,h2,h3{ font-family: 'Manrope', -apple-system, 'Helvetica Neue', Arial, sans-serif; text-wrap: balance; margin: 0; color: var(--ink); }
+  p{ margin: 0; }
+  .tabular{ font-variant-numeric: tabular-nums; }
+  a{ color: inherit; }
+
+  @media (prefers-reduced-motion: no-preference){
+    .fade-up{ animation: fadeUp .55s cubic-bezier(.16,1,.3,1) both; }
+    .fade-up.d1{ animation-delay: .08s; }
+    .fade-up.d2{ animation-delay: .16s; }
+  }
+  @keyframes fadeUp{ from{ opacity:0; transform: translateY(10px);} to{ opacity:1; transform:none; } }
+
+  .page{ max-width: 760px; margin: 0 auto; padding: 0 24px 90px; }
+
+  /* ---------- header ---------- */
+  header.hero{ padding: 56px 0 40px; border-bottom: 1px solid var(--border-soft); display:flex; flex-direction:column; gap:20px; }
+  .client-tag{
+    display:inline-flex; align-items:center; gap:8px; align-self:flex-start;
+    background: var(--primary-tint); color: var(--primary-deep);
+    font-size: 13px; font-weight: 700; padding: 7px 14px 7px 11px; border-radius: 999px;
+    border: 1px solid var(--border-soft);
+  }
+  .client-tag .dot{ width:7px; height:7px; border-radius:50%; background: var(--primary); flex-shrink:0; }
+  header.hero h1{ font-size: clamp(30px, 4.6vw, 42px); font-weight: 800; letter-spacing:-.01em; max-width: 18ch; }
+  header.hero .sub{ font-size: 16.5px; color: var(--ink-muted); max-width: 56ch; }
+  .hero-facts{ display:flex; flex-wrap:wrap; gap: 26px; margin-top: 4px; }
+  .hero-facts div{ display:flex; flex-direction:column; gap:2px; }
+  .hero-facts .k{ font-size:11.5px; font-weight:700; color: var(--ink-faint); text-transform:uppercase; letter-spacing:.06em; }
+  .hero-facts .v{ font-size:14.5px; font-weight:700; }
+
+  /* ---------- generic section ---------- */
+  section{ padding: 48px 0; border-bottom: 1px solid var(--border-soft); }
+  section:last-of-type{ border-bottom: none; }
+  .section-head{ display:flex; flex-direction:column; gap:8px; margin-bottom: 26px; }
+  .section-head h2{ font-size: clamp(22px,3vw,27px); font-weight: 800; }
+  .section-head p{ font-size: 15px; color: var(--ink-muted); max-width: 58ch; }
+
+  .callout{
+    background: var(--surface); border:1px solid var(--border-soft);
+    border-left: 3px solid var(--primary); border-radius: 9px;
+    padding: 17px 19px; box-shadow: var(--shadow); display:flex; flex-direction:column; gap:8px;
+  }
+  .callout .lbl{ font-size:11.5px; font-weight:800; text-transform:uppercase; letter-spacing:.07em; color: var(--primary-deep); }
+  .callout p{ font-size:14.5px; color: var(--ink); }
+
+  /* ---------- deliverables / tools ---------- */
+  .deliver-list{ display:flex; flex-direction:column; gap: 4px; }
+  .deliver-row{
+    display:grid; grid-template-columns: 40px 1fr; gap: 16px; align-items:flex-start;
+    padding: 16px 4px; border-top: 1px solid var(--border-soft);
+  }
+  .deliver-row:first-child{ border-top: none; }
+  .deliver-icon{
+    width:40px; height:40px; border-radius: 10px; background: var(--primary-tint);
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  }
+  .deliver-icon svg{ width:20px; height:20px; stroke: var(--primary); }
+  .deliver-body h3{ font-size: 16.5px; font-weight: 700; }
+  .deliver-body p{ font-size: 14.5px; color: var(--ink-muted); margin-top: 4px; max-width: 54ch; }
+
+  /* ---------- method steps ---------- */
+  .process{ display:flex; flex-direction:column; }
+  .proc-item{ display:grid; grid-template-columns: 44px 1fr; gap:18px; position:relative; padding-bottom: 26px; }
+  .proc-item:last-child{ padding-bottom: 0; }
+  .proc-item::before{ content:''; position:absolute; left:21px; top:44px; bottom:0; width:1px; background: var(--border); }
+  .proc-item:last-child::before{ display:none; }
+  .proc-num{
+    width:44px; height:44px; border-radius:50%; background: var(--surface); color: var(--primary);
+    border: 1.5px solid var(--primary); display:flex; align-items:center; justify-content:center;
+    font-family:'Manrope',sans-serif; font-weight:800; font-size:16.5px; z-index:1; flex-shrink:0;
+  }
+  .proc-body{ padding-top:6px; }
+  .proc-body h3{ font-size: 16.5px; font-weight: 700; }
+  .proc-body p{ font-size: 14.5px; color: var(--ink-muted); margin-top:5px; max-width: 56ch; }
+
+  /* ---------- funnel ---------- */
+  .funnel{ display:flex; flex-direction:column; gap:10px; }
+  .funnel-row{
+    display:grid; grid-template-columns: 108px 1fr 76px; gap: 16px; align-items:center;
+    background: var(--surface); border:1px solid var(--border-soft); border-radius:10px;
+    padding: 15px 17px; box-shadow: var(--shadow);
+  }
+  @media (max-width:600px){ .funnel-row{ grid-template-columns: 1fr; gap:4px; } .funnel-pct{ justify-self:start !important; } }
+  .funnel-tag{ font-size:11px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; }
+  .funnel-row.tofu .funnel-tag{ color: var(--accent-deep); }
+  .funnel-row.mofu .funnel-tag{ color: var(--primary); }
+  .funnel-row.bofu .funnel-tag{ color: var(--primary-deep); }
+  .funnel-name{ font-family:'Manrope',serif; font-weight:700; font-size:14.5px; margin-top:2px; }
+  .funnel-body p{ font-size: 13.5px; color: var(--ink-muted); }
+  .funnel-pct{ justify-self:end; text-align:right; }
+  .funnel-pct .n{ font-family:'Manrope',sans-serif; font-size:22px; font-weight:800; }
+  .funnel-pct .l{ font-size:10px; color: var(--ink-faint); text-transform:uppercase; letter-spacing:.05em; }
+
+  /* ---------- roadmap timeline ---------- */
+  .timeline{ display:flex; flex-direction:column; }
+  .tl-item{ display:grid; grid-template-columns: 48px 1fr; gap:18px; position:relative; padding-bottom: 26px; }
+  .tl-item:last-child{ padding-bottom:0; }
+  .tl-item::before{ content:''; position:absolute; left:23px; top:44px; bottom:0; width:1px; background: var(--border); }
+  .tl-item:last-child::before{ display:none; }
+  .tl-num{
+    width:48px; height:48px; border-radius:50%; background: var(--accent-tint); color: var(--accent-deep);
+    display:flex; align-items:center; justify-content:center; font-family:'Manrope',sans-serif; font-weight:800; font-size:15.5px;
+    border: 1px solid var(--border-soft); z-index:1; flex-shrink:0;
+  }
+  .tl-body{ padding-top:6px; }
+  .tl-body .when{ font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:.06em; color: var(--accent-deep); }
+  .tl-body h3{ font-size:16px; font-weight:700; margin-top:3px; }
+  .tl-body p{ font-size:14px; color: var(--ink-muted); margin-top:4px; max-width:56ch; }
+
+  /* ---------- kpi table ---------- */
+  .table-wrap{ overflow-x:auto; }
+  .kpi-table{ width:100%; border-collapse: collapse; background: var(--surface); border-radius:10px; overflow:hidden; border:1px solid var(--border-soft); box-shadow: var(--shadow); }
+  .kpi-table th, .kpi-table td{ text-align:left; padding: 11px 15px; font-size:13.5px; border-bottom:1px solid var(--border-soft); }
+  .kpi-table th{ font-size:10.5px; text-transform:uppercase; letter-spacing:.06em; color: var(--ink-faint); background: var(--surface-alt); font-weight:800; }
+  .kpi-table tr:last-child td{ border-bottom:none; }
+  .kpi-table td.metric{ font-weight:600; }
+
+  /* ---------- closing ---------- */
+  .closing{ display:flex; flex-direction:column; gap:14px; }
+  .closing h2{ font-size: clamp(22px,3vw,27px); font-weight: 800; max-width: 24ch; }
+  .closing p{ font-size:15.5px; color: var(--ink-muted); max-width: 58ch; }
+  .closing-list{ display:flex; flex-direction:column; gap:9px; margin-top:4px; }
+  .closing-list li{ list-style:none; display:flex; gap:10px; font-size:14.5px; align-items:flex-start; }
+  .closing-list li::before{ content:'\2192'; color: var(--accent-deep); font-weight:700; flex-shrink:0; }
+
+  footer{ padding: 36px 0 0; }
+  footer p{ font-size: 12.5px; color: var(--ink-faint); }
+</style>
+
+<div class="page">
+
+  <header class="hero">
+    <span class="client-tag fade-up"><span class="dot"></span>Dhayanne · Corretora de Planos Empresariais</span>
+    <h1 class="fade-up d1">Como eu estruturo a aquisição de clientes do zero</h1>
+    <p class="sub fade-up d2">Não é só uma proposta de preço: é como eu diagnostico, estruturo, rastreio e otimizo uma conta nova, aplicado ao seu negócio de plano de saúde empresarial.</p>
+    <div class="hero-facts">
+      <div><span class="k">Cliente</span><span class="v">Dhayanne</span></div>
+      <div><span class="k">Foco</span><span class="v">Planos empresariais (PJ)</span></div>
+      <div><span class="k">Situação</span><span class="v">Começando do zero</span></div>
+    </div>
+  </header>
+
+  <section>
+    <div class="section-head">
+      <h2>Por que começar do zero aqui é diferente</h2>
+      <p>Uma corretora de planos empresariais tem uma vantagem que a maioria dos negócios não tem: quem precisa não fica esperando aparecer no feed, ela procura ativamente.</p>
+    </div>
+    <div class="callout">
+      <span class="lbl">O que isso muda na estratégia</span>
+      <p>Dono de empresa e RH pesquisam direto no Google quando o plano atual vence ou o time cresce. Isso significa que, além de gerar demanda no Instagram, dá pra capturar quem já está decidindo agora, com um custo de aquisição normalmente mais baixo do que em negócios sem essa busca ativa.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h2>Como eu trabalho</h2>
+      <p>O método que aplico em toda conta nova, nessa ordem.</p>
+    </div>
+    <div class="process">
+      <div class="proc-item">
+        <div class="proc-num">1</div>
+        <div class="proc-body">
+          <h3>Diagnóstico do negócio e do público</h3>
+          <p>Ticket médio de comissão, porte de empresa que você mais atende, e como funciona hoje o ciclo de decisão até a cotação virar contrato.</p>
+        </div>
+      </div>
+      <div class="proc-item">
+        <div class="proc-num">2</div>
+        <div class="proc-body">
+          <h3>Estratégia de funil</h3>
+          <p>Defino quanto investir em capturar quem já procura ativamente, quanto em aquecer quem ainda não te conhece, e quanto em reimpactar quem já teve contato.</p>
+        </div>
+      </div>
+      <div class="proc-item">
+        <div class="proc-num">3</div>
+        <div class="proc-body">
+          <h3>Escolha de plataforma</h3>
+          <p>Google Search pra capturar a busca ativa por "plano de saúde empresarial", e Meta pra gerar demanda nova e reimpactar quem visitou sem converter.</p>
+        </div>
+      </div>
+      <div class="proc-item">
+        <div class="proc-num">4</div>
+        <div class="proc-body">
+          <h3>Rastreamento completo</h3>
+          <p>Cada lead identificado desde o clique até a cotação enviada, pra saber exatamente qual campanha traz empresa que fecha, não só quem pergunta preço.</p>
+        </div>
+      </div>
+      <div class="proc-item">
+        <div class="proc-num">5</div>
+        <div class="proc-body">
+          <h3>Testes estruturados</h3>
+          <p>Uma variável por vez (oferta, público ou criativo), com hipótese clara e volume mínimo antes de decidir o que manter.</p>
+        </div>
+      </div>
+      <div class="proc-item">
+        <div class="proc-num">6</div>
+        <div class="proc-body">
+          <h3>Otimização contínua</h3>
+          <p>Revisão semanal com uma decisão clara por campanha: escalar, manter, ajustar ou pausar, sempre com base no dado, nunca no achismo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h2>Onde o investimento entra</h2>
+      <p>Como eu penso a divisão do orçamento numa conta nova de plano empresarial, antes de qualquer ajuste com dado real.</p>
+    </div>
+    <div class="funnel">
+      <div class="funnel-row bofu">
+        <div>
+          <span class="funnel-tag">Busca ativa</span>
+          <div class="funnel-name">Google Search</div>
+        </div>
+        <div class="funnel-body"><p>Captura quem já está decidindo agora: "plano de saúde empresarial", "contratar plano de saúde CNPJ".</p></div>
+        <div class="funnel-pct"><div class="n tabular">45%</div><div class="l">do orçamento</div></div>
+      </div>
+      <div class="funnel-row tofu">
+        <div>
+          <span class="funnel-tag">Geração de demanda</span>
+          <div class="funnel-name">Meta Ads</div>
+        </div>
+        <div class="funnel-body"><p>Alcança empresas que ainda não sabem que precisam trocar de plano ou corretora.</p></div>
+        <div class="funnel-pct"><div class="n tabular">35%</div><div class="l">do orçamento</div></div>
+      </div>
+      <div class="funnel-row mofu">
+        <div>
+          <span class="funnel-tag">Reimpacto</span>
+          <div class="funnel-name">Remarketing</div>
+        </div>
+        <div class="funnel-body"><p>Reimpacta quem visitou ou pediu cotação e ainda não fechou, até a decisão amadurecer.</p></div>
+        <div class="funnel-pct"><div class="n tabular">20%</div><div class="l">do orçamento</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h2>Ferramentas que eu uso</h2>
+      <p>A estrutura técnica por trás do método, nenhuma dessas etapas fica no achismo.</p>
+    </div>
+    <div class="deliver-list">
+      <div class="deliver-row">
+        <div class="deliver-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4Z"/></svg></div>
+        <div class="deliver-body">
+          <h3>Meta Ads Manager e Google Ads</h3>
+          <p>Gestão das campanhas nas duas plataformas, com estrutura separada por nível de intenção do público.</p>
+        </div>
+      </div>
+      <div class="deliver-row">
+        <div class="deliver-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="0.5" fill="currentColor"/></svg></div>
+        <div class="deliver-body">
+          <h3>Pixel e API de Conversões</h3>
+          <p>Rastreamento que sobrevive a bloqueio de cookies, pra nenhum lead se perder entre o clique e o WhatsApp.</p>
+        </div>
+      </div>
+      <div class="deliver-row">
+        <div class="deliver-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11a9 9 0 0 1 18 0v6a2 2 0 0 1-2 2h-1v-7h3"/><path d="M3 17v-6h3v7H5a2 2 0 0 1-2-2Z"/></svg></div>
+        <div class="deliver-body">
+          <h3>CRM de acompanhamento e dashboard</h3>
+          <p>Cada lead com origem, status e valor de comissão potencial, num painel simples de olhar toda semana.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h2>Métricas que acompanho</h2>
+      <p>O que olho, e com que frequência, pra decisão nunca ficar parada esperando o fim do mês.</p>
+    </div>
+    <div class="table-wrap">
+      <table class="kpi-table">
+        <thead><tr><th>Frequência</th><th>Métrica</th><th>Para quê</th></tr></thead>
+        <tbody>
+          <tr><td>Diária</td><td class="metric">Gasto e nº de leads</td><td>Garantir que a verba está sendo entregue e gerando contato</td></tr>
+          <tr><td>Semanal</td><td class="metric">Custo por lead e por cotação enviada</td><td>Comparar Google e Meta, e cortar o que está caro demais</td></tr>
+          <tr><td>Semanal</td><td class="metric">Taxa de lead → cotação</td><td>Medir qualidade do lead, não só volume</td></tr>
+          <tr><td>Mensal</td><td class="metric">Taxa de cotação → fechamento</td><td>Entender se o gargalo está na mídia ou no processo de venda</td></tr>
+          <tr><td>Mensal</td><td class="metric">Custo por contrato fechado</td><td>Decisão de escalar, ajustar ou pausar cada campanha</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h2>Estrutura para começar do zero</h2>
+      <p>Como fica o calendário das primeiras quatro semanas.</p>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-num">1</div>
+        <div class="tl-body">
+          <span class="when">Semana 1</span>
+          <h3>Diagnóstico e fundação técnica</h3>
+          <p>Configuração de Google Ads, Meta Business Manager, Pixel, API de Conversões e do CRM de acompanhamento.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-num">2</div>
+        <div class="tl-body">
+          <span class="when">Semana 2</span>
+          <h3>Campanhas e criativos</h3>
+          <p>Palavras-chave de busca ativa no Google, públicos e criativos no Meta, tudo alinhado à sua oferta de entrada.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-num">3</div>
+        <div class="tl-body">
+          <span class="when">Semana 3</span>
+          <h3>Lançamento</h3>
+          <p>Campanhas no ar com acompanhamento diário de gasto, cliques e primeiros leads.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-num">4</div>
+        <div class="tl-body">
+          <span class="when">Semana 4</span>
+          <h3>Primeira leitura de dados</h3>
+          <p>Análise do primeiro ciclo completo: quais palavras-chave e públicos trouxeram cotação, e o que corta.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="border-bottom:none;">
+    <div class="closing">
+      <h2>Próximos passos</h2>
+      <p>Esse material mostra como eu trabalho. O investimento ideal depende do volume de contratos que você quer fechar por mês, então isso a gente define juntas.</p>
+      <ul class="closing-list">
+        <li>Conversar sobre meta de contratos por mês e definir o investimento</li>
+        <li>Levantar acesso ao Google Ads e ao Meta Business Manager (ou criar do zero)</li>
+        <li>Definir a oferta de entrada (cotação gratuita, comparativo de planos, etc.)</li>
+        <li>Primeira campanha estruturada em até 7 dias após o alinhamento</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <p>Dhayanne · plano de trabalho para os primeiros 90 dias de execução</p>
+  </footer>
+
+</div>
