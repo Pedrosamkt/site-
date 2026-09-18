@@ -1,0 +1,296 @@
+<title>Plano de Tráfego Jessica</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Public+Sans:wght@400;500;600;700&display=swap');
+
+  :root{
+    --bg: #F5F6F2;
+    --surface: #FFFFFF;
+    --surface-alt: #EBEFE7;
+    --ink: #16221A;
+    --ink-muted: #5A6759;
+    --ink-faint: #8B9689;
+    --primary: #1E4432;
+    --primary-deep: #123023;
+    --primary-tint: #E3EBE2;
+    --accent: #D9772E;
+    --accent-deep: #B85B1D;
+    --accent-tint: #FBEADA;
+    --border: #DCE2D5;
+    --border-soft: #E7ECE1;
+    --shadow: 0 1px 2px rgba(20,30,22,.04), 0 10px 28px -14px rgba(20,30,22,.22);
+  }
+
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg: #10160F;
+      --surface: #182018;
+      --surface-alt: #1E281D;
+      --ink: #EBEFE4;
+      --ink-muted: #A7B29E;
+      --ink-faint: #6F7B69;
+      --primary: #82C69C;
+      --primary-deep: #A9D9BB;
+      --primary-tint: #1E2E22;
+      --accent: #F0964D;
+      --accent-deep: #FFB374;
+      --accent-tint: #33251A;
+      --border: #2C3A2A;
+      --border-soft: #212C1F;
+      --shadow: 0 1px 2px rgba(0,0,0,.35), 0 10px 28px -14px rgba(0,0,0,.55);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg: #10160F;
+    --surface: #182018;
+    --surface-alt: #1E281D;
+    --ink: #EBEFE4;
+    --ink-muted: #A7B29E;
+    --ink-faint: #6F7B69;
+    --primary: #82C69C;
+    --primary-deep: #A9D9BB;
+    --primary-tint: #1E2E22;
+    --accent: #F0964D;
+    --accent-deep: #FFB374;
+    --accent-tint: #33251A;
+    --border: #2C3A2A;
+    --border-soft: #212C1F;
+    --shadow: 0 1px 2px rgba(0,0,0,.35), 0 10px 28px -14px rgba(0,0,0,.55);
+  }
+
+  *{ box-sizing: border-box; }
+  html{ color-scheme: light dark; }
+  body{
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Public Sans', -apple-system, 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+  }
+  h1,h2,h3{ font-family: 'Manrope', -apple-system, 'Helvetica Neue', Arial, sans-serif; text-wrap: balance; margin: 0; color: var(--ink); }
+  p{ margin: 0; }
+  .tabular{ font-variant-numeric: tabular-nums; }
+  a{ color: inherit; }
+
+  @media (prefers-reduced-motion: no-preference){
+    .fade-up{ animation: fadeUp .55s cubic-bezier(.16,1,.3,1) both; }
+    .fade-up.d1{ animation-delay: .08s; }
+    .fade-up.d2{ animation-delay: .16s; }
+  }
+  @keyframes fadeUp{ from{ opacity:0; transform: translateY(10px);} to{ opacity:1; transform:none; } }
+
+  .page{ max-width: 760px; margin: 0 auto; padding: 0 24px 90px; }
+
+  /* ---------- header ---------- */
+  header.hero{ padding: 56px 0 40px; border-bottom: 1px solid var(--border-soft); display:flex; flex-direction:column; gap:20px; }
+  .client-tag{
+    display:inline-flex; align-items:center; gap:8px; align-self:flex-start;
+    background: var(--primary-tint); color: var(--primary-deep);
+    font-size: 13px; font-weight: 700; padding: 7px 14px 7px 11px; border-radius: 999px;
+    border: 1px solid var(--border-soft);
+  }
+  .client-tag .dot{ width:7px; height:7px; border-radius:50%; background: var(--primary); flex-shrink:0; }
+  header.hero h1{ font-size: clamp(30px, 4.6vw, 42px); font-weight: 800; letter-spacing:-.01em; max-width: 17ch; }
+  header.hero .sub{ font-size: 16.5px; color: var(--ink-muted); max-width: 54ch; }
+  .hero-facts{ display:flex; flex-wrap:wrap; gap: 26px; margin-top: 4px; }
+  .hero-facts div{ display:flex; flex-direction:column; gap:2px; }
+  .hero-facts .k{ font-size:11.5px; font-weight:700; color: var(--ink-faint); text-transform:uppercase; letter-spacing:.06em; }
+  .hero-facts .v{ font-size:14.5px; font-weight:700; }
+
+  /* ---------- generic section ---------- */
+  section{ padding: 48px 0; border-bottom: 1px solid var(--border-soft); }
+  section:last-of-type{ border-bottom: none; }
+  .section-head{ display:flex; flex-direction:column; gap:8px; margin-bottom: 26px; }
+  .section-head h2{ font-size: clamp(22px,3vw,27px); font-weight: 800; }
+  .section-head p{ font-size: 15px; color: var(--ink-muted); max-width: 58ch; }
+
+  .callout{
+    background: var(--surface); border:1px solid var(--border-soft);
+    border-left: 3px solid var(--primary); border-radius: 9px;
+    padding: 17px 19px; box-shadow: var(--shadow); display:flex; flex-direction:column; gap:8px;
+    margin-top: 18px;
+  }
+  .callout .lbl{ font-size:11.5px; font-weight:800; text-transform:uppercase; letter-spacing:.07em; color: var(--primary-deep); }
+  .callout p{ font-size:14.5px; color: var(--ink); }
+
+  /* ---------- deliverables ---------- */
+  .deliver-list{ display:flex; flex-direction:column; gap: 4px; }
+  .deliver-row{
+    display:grid; grid-template-columns: 40px 1fr; gap: 16px; align-items:flex-start;
+    padding: 16px 4px; border-top: 1px solid var(--border-soft);
+  }
+  .deliver-row:first-child{ border-top: none; }
+  .deliver-icon{
+    width:40px; height:40px; border-radius: 10px; background: var(--primary-tint);
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  }
+  .deliver-icon svg{ width:20px; height:20px; stroke: var(--primary); }
+  .deliver-body h3{ font-size: 16.5px; font-weight: 700; }
+  .deliver-body p{ font-size: 14.5px; color: var(--ink-muted); margin-top: 4px; max-width: 54ch; }
+
+  /* ---------- process ---------- */
+  .process{ display:flex; flex-direction:column; }
+  .proc-item{ display:grid; grid-template-columns: 44px 1fr; gap:18px; position:relative; padding-bottom: 30px; }
+  .proc-item:last-child{ padding-bottom: 0; }
+  .proc-item::before{ content:''; position:absolute; left:21px; top:44px; bottom:0; width:1px; background: var(--border); }
+  .proc-item:last-child::before{ display:none; }
+  .proc-num{
+    width:44px; height:44px; border-radius:50%; background: var(--surface); color: var(--primary);
+    border: 1.5px solid var(--primary); display:flex; align-items:center; justify-content:center;
+    font-family:'Manrope',sans-serif; font-weight:800; font-size:16.5px; z-index:1; flex-shrink:0;
+  }
+  .proc-body{ padding-top:6px; }
+  .proc-body h3{ font-size: 16.5px; font-weight: 700; }
+  .proc-body p{ font-size: 14.5px; color: var(--ink-muted); margin-top:5px; max-width: 54ch; }
+
+  /* ---------- investment (open) ---------- */
+  .invest-card{
+    background: var(--surface); border: 2px solid var(--accent); border-radius: 14px;
+    padding: 24px 24px; box-shadow: var(--shadow); display:flex; flex-direction:column; gap:12px;
+  }
+  .invest-card .lbl{ font-size:12px; font-weight:800; text-transform:uppercase; letter-spacing:.06em; color: var(--accent-deep); }
+  .invest-card h3{ font-size:18px; font-weight:700; }
+  .invest-card p{ font-size:14.5px; color: var(--ink-muted); }
+  .invest-list{ list-style:none; margin:4px 0 0; padding:0; display:flex; flex-direction:column; gap:8px; }
+  .invest-list li{ display:flex; gap:9px; align-items:flex-start; font-size:14px; color: var(--ink); }
+  .invest-list li svg{ width:16px; height:16px; flex-shrink:0; margin-top:2px; stroke: var(--accent-deep); }
+
+  /* ---------- closing ---------- */
+  .closing{ display:flex; flex-direction:column; gap:14px; }
+  .closing h2{ font-size: clamp(22px,3vw,27px); font-weight: 800; max-width: 22ch; }
+  .closing p{ font-size:15.5px; color: var(--ink-muted); max-width: 56ch; }
+  .closing-list{ display:flex; flex-direction:column; gap:9px; margin-top:4px; }
+  .closing-list li{ list-style:none; display:flex; gap:10px; font-size:14.5px; align-items:flex-start; }
+  .closing-list li::before{ content:'\2192'; color: var(--accent-deep); font-weight:700; flex-shrink:0; }
+
+  footer{ padding: 36px 0 0; }
+  footer p{ font-size: 12.5px; color: var(--ink-faint); }
+</style>
+
+<div class="page">
+
+  <header class="hero">
+    <span class="client-tag fade-up"><span class="dot"></span>Jessica Jesus · Depilação a Laser</span>
+    <h1 class="fade-up d1">Seu plano para agendar mais avaliações</h1>
+    <p class="sub fade-up d2">Anúncios pagos e rastreamento completo pra transformar quem só curte o post em avaliação agendada, sem depender só do alcance do Instagram.</p>
+    <div class="hero-facts">
+      <div><span class="k">Cliente</span><span class="v">Jessica Jesus</span></div>
+      <div><span class="k">Canal</span><span class="v">Instagram e Facebook Ads</span></div>
+      <div><span class="k">Início</span><span class="v">A combinar</span></div>
+    </div>
+  </header>
+
+  <section>
+    <div class="section-head">
+      <h2>O que fazemos por você</h2>
+      <p>Tudo incluído em um único plano.</p>
+    </div>
+    <div class="deliver-list">
+      <div class="deliver-row">
+        <div class="deliver-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4Z"/></svg></div>
+        <div class="deliver-body">
+          <h3>Gestão de anúncios</h3>
+          <p>Campanhas segmentadas pra quem está perto de Belo Horizonte e tem real interesse em agendar avaliação, não só curtir o post.</p>
+        </div>
+      </div>
+      <div class="deliver-row">
+        <div class="deliver-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="0.5" fill="currentColor"/></svg></div>
+        <div class="deliver-body">
+          <h3>Rastreamento completo</h3>
+          <p>Cada contato identificado: qual anúncio gerou, quanto custou, se virou avaliação agendada.</p>
+        </div>
+      </div>
+      <div class="deliver-row">
+        <div class="deliver-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11a9 9 0 0 1 18 0v6a2 2 0 0 1-2 2h-1v-7h3"/><path d="M3 17v-6h3v7H5a2 2 0 0 1-2-2Z"/></svg></div>
+        <div class="deliver-body">
+          <h3>Direcionamento estratégico ao atendimento</h3>
+          <p>Orientação sobre como conduzir a conversa da primeira mensagem até o fechamento do pacote de sessões.</p>
+        </div>
+      </div>
+      <div class="deliver-row">
+        <div class="deliver-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 0 1-11.8 7.8L3 21l1.7-6.2A8.5 8.5 0 1 1 21 11.5Z"/></svg></div>
+        <div class="deliver-body">
+          <h3>Automação de Instagram</h3>
+          <p>Respostas automáticas em comentários e directs, pra nenhum pedido de avaliação se perder no meio das mensagens.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <span class="lbl">Ponto de atenção no seu perfil hoje</span>
+      <p>Sua bio pede pra agendar pelo direct. Funciona, mas é quase impossível rastrear quantas dessas mensagens realmente viram avaliação. Recomendo migrar o agendamento pra um link de WhatsApp assim que os anúncios entrarem no ar, mantendo o direct como canal secundário. Isso é o que permite saber, com precisão, quanto cada avaliação está custando.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h2>Como funciona</h2>
+      <p>Começa com uma análise da sua estrutura atual, depois entra em ritmo de execução e ajuste.</p>
+    </div>
+    <div class="process">
+      <div class="proc-item">
+        <div class="proc-num">1</div>
+        <div class="proc-body">
+          <h3>Analisamos sua estrutura atual</h3>
+          <p>Hoje o agendamento é só pelo direct, sem anúncio no ar. Mapeamos isso antes de qualquer campanha começar.</p>
+        </div>
+      </div>
+      <div class="proc-item">
+        <div class="proc-num">2</div>
+        <div class="proc-body">
+          <h3>Configuramos tudo</h3>
+          <p>Rastreamento, conta de anúncio e link de agendamento prontos antes do primeiro real investido.</p>
+        </div>
+      </div>
+      <div class="proc-item">
+        <div class="proc-num">3</div>
+        <div class="proc-body">
+          <h3>Colocamos os anúncios no ar</h3>
+          <p>Acompanhamento diário nos primeiros dias, pra garantir que a verba está gerando contato de verdade.</p>
+        </div>
+      </div>
+      <div class="proc-item">
+        <div class="proc-num">4</div>
+        <div class="proc-body">
+          <h3>Ajustamos toda semana</h3>
+          <p>Cortamos o que não performa e damos mais verba pro que traz avaliação agendada, com base em dado, não achismo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="border-bottom:none;">
+    <div class="section-head">
+      <h2>Investimento</h2>
+      <p>Como você ainda não investe em anúncios, o primeiro passo é alinhar juntas o quanto faz sentido começar.</p>
+    </div>
+    <div class="invest-card">
+      <span class="lbl">A combinar</span>
+      <h3>Definimos o valor conforme sua meta de avaliações por mês</h3>
+      <p>Sem número fechado agora porque isso depende de quantas avaliações por mês você quer ter capacidade de atender. Numa conversa rápida, eu:</p>
+      <ul class="invest-list">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Entendo sua capacidade de atendimento hoje na unidade</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Calculo uma verba de teste pra validar o custo por avaliação</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Te mostro faixas de investimento e o que cada uma entrega</li>
+      </ul>
+    </div>
+  </section>
+
+  <section style="border-bottom:none;">
+    <div class="closing">
+      <h2>Só falta uma decisão</h2>
+      <p>Confirme interesse e a gente já alinha o investimento pra começar essa semana.</p>
+      <ul class="closing-list">
+        <li>Confirmar interesse em seguir com esse planejamento</li>
+        <li>Definir juntas a meta de avaliações agendadas por mês</li>
+        <li>Liberar acesso ao Instagram (ou perfil comercial)</li>
+        <li>Primeira campanha no ar em até 7 dias após o alinhamento</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <p>Jessica Jesus · Espaço Laser CenterMinas, Belo Horizonte</p>
+  </footer>
+
+</div>
