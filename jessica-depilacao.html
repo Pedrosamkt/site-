@@ -144,6 +144,14 @@
   .proc-body p{ font-size: 14.5px; color: var(--ink-muted); margin-top:5px; max-width: 54ch; }
 
   /* ---------- investment ---------- */
+  .price-notice{
+    display:flex; align-items:center; gap:9px; margin-bottom: 22px;
+    background: var(--accent-tint); border: 1px solid var(--border-soft); border-radius: 9px;
+    padding: 11px 15px; font-size: 13.5px; color: var(--ink);
+  }
+  .price-notice svg{ width:16px; height:16px; stroke: var(--accent-deep); flex-shrink:0; }
+  .price-notice b{ font-weight: 700; }
+  .amount-sub .strike{ text-decoration: line-through; text-decoration-color: var(--ink-faint); color: var(--ink-faint); font-weight:700; }
   .price-card{
     background: var(--surface); border: 2px solid var(--accent); border-radius: 14px;
     padding: 26px 24px; box-shadow: var(--shadow); display:flex; flex-direction:column; gap:18px;
@@ -265,11 +273,18 @@
       <h2>Investimento</h2>
       <p>Plano de entrada, pensado pro seu momento atual de quem ainda não investe em anúncios.</p>
     </div>
+
+    <div class="price-notice">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+      Condição de consultoria válida <b>fechando hoje</b>
+    </div>
+
     <div class="price-card">
       <span class="plan-name">Plano essencial</span>
       <div>
-        <div class="amount tabular">R$ 600<small>/mês</small></div>
-        <p class="amount-sub tabular">Contrato de 3 meses · total R$ 1.800</p>
+        <div class="amount tabular">R$ 450<small>/mês</small></div>
+        <p class="amount-sub tabular"><span class="strike">R$ 600/mês</span> fechando hoje</p>
+        <p class="amount-sub tabular">Contrato de 3 meses · total R$ 1.350</p>
       </div>
       <ul>
         <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Gestão de anúncios</li>
