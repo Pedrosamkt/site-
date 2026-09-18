@@ -143,17 +143,25 @@
   .proc-body h3{ font-size: 16.5px; font-weight: 700; }
   .proc-body p{ font-size: 14.5px; color: var(--ink-muted); margin-top:5px; max-width: 54ch; }
 
-  /* ---------- investment (open) ---------- */
-  .invest-card{
+  /* ---------- investment ---------- */
+  .price-card{
     background: var(--surface); border: 2px solid var(--accent); border-radius: 14px;
-    padding: 24px 24px; box-shadow: var(--shadow); display:flex; flex-direction:column; gap:12px;
+    padding: 26px 24px; box-shadow: var(--shadow); display:flex; flex-direction:column; gap:18px;
+    max-width: 420px;
   }
-  .invest-card .lbl{ font-size:12px; font-weight:800; text-transform:uppercase; letter-spacing:.06em; color: var(--accent-deep); }
-  .invest-card h3{ font-size:18px; font-weight:700; }
-  .invest-card p{ font-size:14.5px; color: var(--ink-muted); }
-  .invest-list{ list-style:none; margin:4px 0 0; padding:0; display:flex; flex-direction:column; gap:8px; }
-  .invest-list li{ display:flex; gap:9px; align-items:flex-start; font-size:14px; color: var(--ink); }
-  .invest-list li svg{ width:16px; height:16px; flex-shrink:0; margin-top:2px; stroke: var(--accent-deep); }
+  .price-card .plan-name{ font-size:13px; font-weight:700; color: var(--ink-faint); text-transform:uppercase; letter-spacing:.05em; }
+  .price-card .amount{ font-family:'Manrope',sans-serif; font-size: 36px; font-weight: 800; }
+  .price-card .amount small{ font-family:'Public Sans'; font-size:13.5px; font-weight:600; color: var(--ink-faint); }
+  .price-card .amount-sub{ font-size: 13.5px; color: var(--ink-muted); margin-top: -10px; }
+  .price-card ul{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px; }
+  .price-card li{ display:flex; gap:9px; align-items:flex-start; font-size:14px; color: var(--ink); }
+  .price-card li svg{ width:16px; height:16px; flex-shrink:0; margin-top:2px; stroke: var(--accent-deep); }
+  .price-card .terms{
+    margin-top: 2px; padding-top: 14px; border-top: 1px solid var(--border-soft);
+    display:flex; flex-direction:column; gap:3px;
+  }
+  .price-card .terms .total{ font-size: 13.5px; font-weight: 700; color: var(--ink); }
+  .price-card .terms .fine{ font-size: 12px; color: var(--ink-faint); }
 
   /* ---------- closing ---------- */
   .closing{ display:flex; flex-direction:column; gap:14px; }
@@ -203,15 +211,8 @@
       <div class="deliver-row">
         <div class="deliver-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11a9 9 0 0 1 18 0v6a2 2 0 0 1-2 2h-1v-7h3"/><path d="M3 17v-6h3v7H5a2 2 0 0 1-2-2Z"/></svg></div>
         <div class="deliver-body">
-          <h3>Direcionamento estratégico ao atendimento</h3>
-          <p>Orientação sobre como conduzir a conversa da primeira mensagem até o fechamento do pacote de sessões.</p>
-        </div>
-      </div>
-      <div class="deliver-row">
-        <div class="deliver-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 0 1-11.8 7.8L3 21l1.7-6.2A8.5 8.5 0 1 1 21 11.5Z"/></svg></div>
-        <div class="deliver-body">
-          <h3>Automação de Instagram</h3>
-          <p>Respostas automáticas em comentários e directs, pra nenhum pedido de avaliação se perder no meio das mensagens.</p>
+          <h3>Consultoria estratégica</h3>
+          <p>Orientação sobre como conduzir a conversa da primeira mensagem até o fechamento do pacote de sessões, ajustada à sua rotina de atendimento na unidade CenterMinas.</p>
         </div>
       </div>
     </div>
@@ -262,17 +263,22 @@
   <section style="border-bottom:none;">
     <div class="section-head">
       <h2>Investimento</h2>
-      <p>Como você ainda não investe em anúncios, o primeiro passo é alinhar juntas o quanto faz sentido começar.</p>
+      <p>Plano de entrada, pensado pro seu momento atual de quem ainda não investe em anúncios.</p>
     </div>
-    <div class="invest-card">
-      <span class="lbl">A combinar</span>
-      <h3>Definimos o valor conforme sua meta de avaliações por mês</h3>
-      <p>Sem número fechado agora porque isso depende de quantas avaliações por mês você quer ter capacidade de atender. Numa conversa rápida, eu:</p>
-      <ul class="invest-list">
-        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Entendo sua capacidade de atendimento hoje na unidade</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Calculo uma verba de teste pra validar o custo por avaliação</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Te mostro faixas de investimento e o que cada uma entrega</li>
+    <div class="price-card">
+      <span class="plan-name">Plano essencial</span>
+      <div>
+        <div class="amount tabular">R$ 600<small>/mês</small></div>
+        <p class="amount-sub tabular">Contrato de 3 meses · total R$ 1.800</p>
+      </div>
+      <ul>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Gestão de anúncios</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Rastreamento completo</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Consultoria estratégica</li>
       </ul>
+      <div class="terms">
+        <span class="fine">Valor de entrada, pensado pra validar o custo por avaliação nesse período</span>
+      </div>
     </div>
   </section>
 
@@ -282,7 +288,7 @@
       <p>Confirme interesse e a gente já alinha o investimento pra começar essa semana.</p>
       <ul class="closing-list">
         <li>Confirmar interesse em seguir com esse planejamento</li>
-        <li>Definir juntas a meta de avaliações agendadas por mês</li>
+        <li>Fechar o contrato de 3 meses</li>
         <li>Liberar acesso ao Instagram (ou perfil comercial)</li>
         <li>Primeira campanha no ar em até 7 dias após o alinhamento</li>
       </ul>
